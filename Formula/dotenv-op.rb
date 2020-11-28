@@ -15,15 +15,17 @@ class DotenvOp < Formula
     return if ENV["CI"]
 
     puts <<~EOS
+
       ###############################################################################################################
       #                                                                                                             #
       # Don't forget to add the following variables to your .bash_profile:                                          #
       #                                                                                                             #    
-      # DOTENVOP_VAULT="[vault]"          => The .env file will be stored in this vault                             #
-      # DOTENVOP_ACCOUNT="[name]"         => This is your 1Password account name                                    #
-      # DOTENVOP_EMAIL="[your@email.com]" => This is the email you use to connect to your 1Password account         #
+      # export DOTENVOP_VAULT="[vault]"          => The .env file will be stored in this vault                      #
+      # export DOTENVOP_ACCOUNT="[name]"         => This is your 1Password account name                             #
+      # export DOTENVOP_EMAIL="[your@email.com]" => This is the email you use to connect to your 1Password account  #
       #                                                                                                             #
       ###############################################################################################################
+
     EOS
   end
 
