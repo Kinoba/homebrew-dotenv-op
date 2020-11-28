@@ -2,29 +2,32 @@ class DotenvOp < Formula
   desc "Manage and share your dotenv files with 1Password from your terminal"
   homepage "https://github.com/Kinoba/dotenv-op"
   url "https://github.com/Kinoba/dotenv-op/releases/download/v0.1/dotenv-op.tar.gz"
-  sha256 "a1cb7872343a5a20897dee8b3b486ca84d941ba8c6a4b2e4f03022405bce2c8f"
+  sha256 "a76888e17352bc4c7e4d0cf9ab3b3e26c25bdc90b42cd83c07b452ae6852c4db"
   license "MIT"
 
   bottle :unneeded
 
   def install
     bin.install "dotenv-op.sh" => "dotenv-op"
-    #system "./configure", "--disable-debug",
-    #                      "--disable-dependency-tracking",
-    #                      "--disable-silent-rules",
-    #                      "--prefix=#{prefix}"
+  end
+
+  def post_install
+    return if ENV["CI"]
+
+    puts <<~EOS
+      ###############################################################################################################
+      #                                                                                                             #
+      # Don't forget to add the following variables to your .bash_profile:                                          #
+      #                                                                                                             #    
+      # DOTENVOP_VAULT="[vault]"          => The .env file will be stored in this vault                             #
+      # DOTENVOP_ACCOUNT="[name]"         => This is your 1Password account name                                    #
+      # DOTENVOP_EMAIL="[your@email.com]" => This is the email you use to connect to your 1Password account         #
+      #                                                                                                             #
+      ###############################################################################################################
+    EOS
   end
 
   test do
-    # `test do` will create, run in and delete a temporary directory.
-    #
-    # This test will fail and we won't accept that! For Homebrew/homebrew-core
-    # this will need to be a test that verifies the functionality of the
-    # software. Run the test with `brew test dotenv-op`. Options passed
-    # to `brew install` such as `--HEAD` also need to be provided to `brew test`.
-    #
-    # The installed folder is not in the path, so use the entire path to any
-    # executables being tested: `system "#{bin}/program", "do", "something"`.
-    system "false"
+    assert_includes shell_output("#{bin}/dotenv-op -h", 1).chomp, "usage"
   end
 end
