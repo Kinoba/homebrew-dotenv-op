@@ -18,7 +18,7 @@ class DotenvOp < Formula
 
       ###############################################################################################################
       #                                                                                                             #
-      # Don't forget to add the following variables to your .bash_profile:                                          #
+      # Don't forget to add the following variables to your .bash_profile/.zshrc:                                   #
       #                                                                                                             #    
       # export DOTENVOP_VAULT="[vault]"          => The .env file will be stored in this vault                      #
       # export DOTENVOP_ACCOUNT="[name]"         => This is your 1Password account name                             #
