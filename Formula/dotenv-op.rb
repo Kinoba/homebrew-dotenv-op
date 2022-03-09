@@ -1,8 +1,8 @@
 class DotenvOp < Formula
   desc "Manage and share your dotenv files with 1Password from your terminal"
   homepage "https://github.com/Kinoba/dotenv-op"
-  url "https://github.com/Kinoba/dotenv-op/releases/download/v0.3.0/dotenv-op.tar.gz"
-  sha256 "f63a7dddf4a11836d9ca387b221349daa2c8f92d76a180a345fe2bff247bde1b"
+  url "https://github.com/Kinoba/dotenv-op/releases/download/v0.3.1/dotenv-op.tar.gz"
+  sha256 "bd4fbc27bfde2ae2a32c4e698174f61577a49091f3539690a4ac4642f3aa660c"
   license "MIT"
 
   def install
